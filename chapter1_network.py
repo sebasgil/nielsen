@@ -21,7 +21,7 @@ class Network(object):
     def __init__(self, sizes):
         """
         The list 'sizes' contains the number of neurons in the respective layers of the network such that a
-        [2,3,1] network would have three layers with 2, 3, and 1 neuron respectively. Biases and weights are
+        [2,3,1] network would have three layers with 2, 3, and 1 neuron, respectively. Biases and weights are
         randomly initialized from a zero mean and unity variance Gaussian distribution.  Since the first layer
         is conventionally the input layer, it lacks a bias.
         """
@@ -74,7 +74,7 @@ class Network(object):
         C_x. nabla_b and nabla_w are layer-by-layer lists of numpy arrays not unlike self.biases and self.weights."""
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
-        # feedforward
+        # forward pass
         activation = x
         activations = [x] # store all activations layer by layer in this list
         zs = [] # store all the z vectors in this list layer by layer
@@ -97,7 +97,7 @@ class Network(object):
         return (nabla_b, nabla_w)
 
     def evaluate(self, test_data):
-        """Return the number of test inputs for wich the neural network outputs the correct result."""
+        """Return the number of test inputs for which the neural network outputs the correct result."""
         test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]
         return sum(int(x == y) for (x,y) in test_results)
 

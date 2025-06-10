@@ -1,0 +1,77 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.whl
+
+# Ignore compiled C extensions
+*.so
+
+# Ignore environment files
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pyvenv.cfg
+
+# Ignore package manager files
+pip-log.txt
+pip-delete-this-directory.txt
+pip-wheel-metadata/
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Ignore virtual environment directories
+lib/
+lib64
+lib64/
+bin/
+include/
+share/
+pyenv/
+python_env/
+site-packages/
+
+# Ignore logs
+*.log
+*.out
+*.err
+nohup.out
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system files (OS-specific)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Ignore unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Ignore build files
+build/
+dist/
+*.egg-info/
+.installed.cfg
+MANIFEST
