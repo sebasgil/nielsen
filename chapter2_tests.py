@@ -1,27 +1,14 @@
+import mnist_loader
 from chapter1_network import Network as net1
 from chapter2_network import Network as net2
 
-import numpy as np
-import pdb
+training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
 
-# For development purposes and checking that the full-matrix approach works on the chapter 2 script
-np.random.seed(42)  # For reproducibility
-test1 = net1([2, 3, 1])
+print('Initializing comparison experiment.')
+print('Unvectorized network results:')
+test1 = net1([784,100,10])
+test1.SGD(training_data, 30, 10, 3.0, test_data=test_data)
 
-np.random.seed(42)  # For reproducibility
-test2 = net2([2, 3, 1])
-
-print("Checking that initialization is the same:")
-# Compare each array in the lists
-weights_equal = all(np.array_equal(w1, w2) for w1, w2 in zip(test1.weights, test2.weights))
-biases_equal = all(np.array_equal(b1, b2) for b1, b2 in zip(test1.biases, test2.biases))
-
-print(f"Weights equal: {weights_equal}")
-print(f"Biases equal: {biases_equal}")
-
-# If they're still False, let's debug:
-if not weights_equal:
-    print("\nDebugging weights:")
-    for i, (w1, w2) in enumerate(zip(test1.weights, test2.weights)):
-        print(f"Layer {i} weights equal: {np.array_equal(w1, w2)}")
-        print(f"Layer {i} shapes: {w1.shape} vs {w2.shape}")
+print('Vectorized network results:')
+test2 = net2([784,100,10])
+test2.SGD(training_data, 30, 10, 3.0, test_data=test_data)

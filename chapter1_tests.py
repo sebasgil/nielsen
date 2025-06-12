@@ -1,5 +1,5 @@
 import mnist_loader
-from chapter_1_network import Network as net
+from chapter1_network import Network as net
 
 training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
 

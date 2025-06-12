@@ -10,7 +10,6 @@ matrix-based approach to work across all batches in conjunction.
 import random
 import time
 import numpy as np
-import pdb
 
 class Network(object):
 
@@ -24,6 +23,7 @@ class Network(object):
         for b,W in zip(self.biases, self.weights):
             # This retains the same shape, but now b is broadcasted everywhere
             A = sigmoid(np.dot(W, A) + b)
+        return A
 
     def SGD(self, training_data, epochs, mini_batch_size, eta, test_data=None):
         if test_data: n_test = len(test_data)
@@ -88,7 +88,6 @@ class Network(object):
         return sum(int(x == y) for (x,y) in test_results)
 
     def cost_derivative(self, output_activations, Y):
-        """Return the vector of partial derivatives for the output activations assuming a quadratic cost function"""
         return (output_activations - Y)
 
 
